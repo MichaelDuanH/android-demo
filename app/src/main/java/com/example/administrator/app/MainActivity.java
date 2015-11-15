@@ -1,34 +1,54 @@
 package com.example.administrator.app;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements RadioGroup.OnCheckedChangeListener {
     private CheckBox checkBox;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkBox = (CheckBox) findViewById(R.id.checkBox1);
-        //通过设置checkbox的监听事件来对checkbox处理
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
+        radioGroup.setOnCheckedChangeListener(this);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //通过oncheckchangelistener方法监听当前的checkbox是否被选中
-                if(isChecked){
-                  //如果为true，获取checkbox的文本内容
+                if (isChecked) {
                     String tx = checkBox.getText().toString();
                     Log.i("tag", tx);
                 }
             }
         });
+    }
+
+    /**
+     * <p>Called when the checked radio button has changed. When the
+     * selection is cleared, checkedId is -1.</p>
+     *
+     * @param group     the group in which the checked radio button has changed
+     * @param checkedId the unique identifier of the newly checked radio button
+     */
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.radioButton:
+                Log.i("tag", "男");
+                break;
+            case R.id.radioButton2:
+                Log.i("tag", "女");
+                break;
+            default:
+
+
+        }
     }
 }

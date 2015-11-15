@@ -3,11 +3,31 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
+    <!-- CheckBox demo-->
     <CheckBox
         android:checked="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="男"
+        android:text="篮球"
         android:textStyle="bold|italic"
         android:id="@+id/checkBox1"/>
+    <!-- RadioButton-->
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/radioGroup1"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男"
+            android:checked="true"
+            android:id="@+id/radioButton" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"
+            android:id="@+id/radioButton2" />
+    </RadioGroup>
 </RelativeLayout>
